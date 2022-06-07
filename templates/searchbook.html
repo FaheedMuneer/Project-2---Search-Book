@@ -1,0 +1,78 @@
+{% extends "layout.html" %}
+
+<!-- {% block heading %}
+first LoginPage
+{% endblock %} -->
+
+{% block content %}
+<div>
+    <nav class="navbar navbar-dark bg-dark">
+        <h5 class="text-white h4">
+            <a href="/">Home</a>
+            <a href="/login">Login</a>
+            <a href="/register">Register</a>
+            <a href="/">Logout</a>
+        </h5>
+        
+    </nav>
+
+</div>
+
+
+<h4>Home PAGE</h4>
+<div style="text-align: center;margin-left: 15%;margin-right: 15%;">
+    <div>
+        <form class="example" action="/search"  method="post">
+            <input type="text" placeholder="Search.." name="search" class="form-control"required>
+            <button type="submit" style="width: 240px;">Search</button>
+          <br>
+        </form>
+    </div>
+</div>
+<div>
+  <br>
+
+  <div>
+    <form action="{{url_for('bookshelf')}}">
+      <input type="submit" value="Myshelf">
+    </form>
+  </div>
+  <br>
+        <table class="table">
+            <thead class="thead-dark" style="margin: auto;">
+                
+                <th ><h5 >isbn</h5></th>
+                <th ><h5 >Title of the book</h5></th>
+                <th ><h5 >Author</h5></th>
+                <th ><h5 >Year</h5></th>
+              <tr>
+                <br>
+                <br>
+              </tr>
+            </thead>
+            <tbody>
+              {% for book in books %}
+              <tr>
+        
+
+                    <td><h4><a href="/rr/{{book.isbn}}" >{{book.isbn}}</a> </h4></td>
+                    <td><h4>{{book.title}}</h4></td>
+                    <td><h4>{{book.author}}</h4></td>
+                    <td><h4>{{book.year}}</h4></td>
+              {% endfor %}
+                
+
+
+            </tr>
+              
+            </tbody>
+          </table>
+        <br>
+        <br>
+        
+    
+</div>
+
+
+{% endblock %}
+
